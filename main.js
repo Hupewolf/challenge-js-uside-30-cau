@@ -204,6 +204,80 @@ console.log(convertBinary("house"));
 console.log(convertBinary("excLAIM"));
 console.log(convertBinary("moon"));
 
+function makeTitle(str) {
+    return str.replace(/\b\w/g, c => c.toUpperCase());
+}
 
+console.log(makeTitle("This is a title"));
+console.log(makeTitle("capitalize every word"));
+console.log(makeTitle("I Like Pizza"));
+console.log(makeTitle("PIZZA PIZZA PIZZA"));
 
-console.log();
+function removeABC(str) {
+    if (!/[abc]/i.test(str)) return null;
+    return str.replace(/[abc]/gi, "");
+}
+
+console.log(removeABC("This might be a bit hard")); 
+console.log(removeABC("hello world!"));
+console.log(removeABC(""));
+
+function dashed(str) {
+    return str.replace(/[aeiou]/gi, c => `-${c}-`);
+}
+
+console.log(dashed("28Tech")); 
+console.log(dashed("Carpe Diem")); 
+console.log(dashed("Fight for your right to party!")); 
+
+function replaceVowel(str) {
+    return str.replace(/a/g, 1).replace(/e/g, 2).replace(/i/g, 3).replace(/o/g, 4).replace(/u/g, 5);
+}
+
+console.log(replaceVowel("karachi")); 
+console.log(replaceVowel("chembur")); 
+console.log(replaceVowel("khandbari"));
+
+function countAll(str) {
+    const letters = (str.match(/[a-z]/gi) || []).length;
+    const digits = (str.match(/[0-9]/g) || []).length;
+    return { "LETTERS": letters, "DIGITS": digits };
+}
+
+console.log(countAll("Hello World"));
+console.log(countAll("H3ll0 Wor1d")); 
+console.log(countAll("149990"));
+
+function countAdverbs(sentence) {
+    const matches = sentence.match(/\b\w+ly\b/gi);
+    return matches ? matches.length : 0;
+}
+
+console.log(countAdverbs("She ran hurriedly towards the stadium.")); 
+console.log(countAdverbs("She ate the lasagna heartily and noisily.")); 
+console.log(countAdverbs("He hates potatoes."));
+console.log(countAdverbs("He was happily, crazily, foolishly over the moon.")); 
+
+function lettersOnly(str) {
+    const test = str.match(/^[a-z\s]+$/);
+    return test ? true : false;
+}
+
+console.log(lettersOnly("JAVACRIPT"));
+console.log(lettersOnly("javascript")); 
+console.log(lettersOnly("12321313"));
+console.log(lettersOnly("i have spaces"));
+console.log(lettersOnly("i have numbers(1-10)"));
+console.log(lettersOnly(""));
+
+function alphanumericRestriction(str) {
+    if (!str) return false; 
+    if (/\s/.test(str)) return false; 
+    return /^[a-z]+$/i.test(str) || /^[0-9]+$/.test(str);
+}
+
+console.log(alphanumericRestriction("Bold"));
+console.log(alphanumericRestriction("123454321"));
+console.log(alphanumericRestriction("H3LL0"));
+console.log(alphanumericRestriction("ed@bit"));
+console.log(alphanumericRestriction("hello hi"));
